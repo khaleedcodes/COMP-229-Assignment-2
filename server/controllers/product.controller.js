@@ -44,3 +44,22 @@ exports.delete = (req, res) => {
         })
         .catch(err => res.status(500).json({ message: err.message }));
 };
+
+// Delete all Products
+exports.deleteAll = (req, res) => {
+    Product.deleteMany({})
+        .then(data => {
+            res.json({ message: `${data.deletedCount} Products were deleted successfully!` });
+        })
+        .catch(err => res.status(500).json({ message: err.message }));
+};
+
+// Find Products by name containing 'kw'
+exports.findByName = (req, res) => {
+    const name = req.query.name;
+    Product.find({ name: new RegExp(name, 'i') })
+        .then(data => {
+            res.json(data);
+        })
+        .catch(err => res.status(500).json({ message: err.message }));
+};

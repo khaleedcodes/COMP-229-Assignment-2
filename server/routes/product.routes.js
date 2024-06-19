@@ -17,4 +17,10 @@ router.put('/:id', products.update);
 // Delete a Product with id
 router.delete('/:id', products.delete);
 
+// Delete all Products
+router.delete('/', products.deleteAll);
+
+// Find Products by name containing 'kw'
+router.get('/search', products.findByName);
+
 module.exports = router;
