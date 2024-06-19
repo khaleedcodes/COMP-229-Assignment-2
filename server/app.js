@@ -20,6 +20,11 @@ mongoose.connect(process.env.MONGODB_URI, {
 const productRoutes = require('./routes/product.routes');
 const categoryRoutes = require('./routes/category.routes');
 
+// Root route
+app.get('/', (req, res) => {
+    res.json({ message: "Welcome to store application" });
+});
+
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
 
